@@ -4,7 +4,6 @@ import ErrorHandlerUtils from "../Utils/ErrorHandlerUtils.js";
 
 export const isAuthenticated =(req,res,next)=>{
 const token=req.cookies["connect.sid"];
-// console.log(token);
 if(!token){
     return next(new ErrorHandlerUtils("you are not logged in!",401));
 }

@@ -7,9 +7,8 @@ import { User } from "../Models/User.js";
 export const getMyprofile=(req,res,next)=>{
 res.status(200).json({
     success:true,
-    message:"you are in your Zone",
     user:req.user,
-})
+});
 }
 
 
