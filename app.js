@@ -45,10 +45,16 @@ connectPassport();
 //importing routes
 import userRoute from "./Routes/User.js"
 import orderRoute from "./Routes/Order.js"
+import OtherRoute from "./Routes/Other.js"
 
 app.use("/api/v1",userRoute)
 app.use("/api/v1",orderRoute)
+app.use("/api/v1",OtherRoute)
 
+
+app.get("/",(req,res)=>{
+    res.send(` <h1>Server is working <a href=${process.env.FRONTEND_URL}>click here</a> to enter the frontend part</h1>`)
+   })
 //errorMiddleware
 app.use(ErrorHandler)
 

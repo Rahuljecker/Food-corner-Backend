@@ -11,7 +11,7 @@ export const instance = new Razorpay({ key_id: process.env.RAZORPY_KEY_ID, key_s
 
 
 app.get("/",(req,res,next)=>{
-res.send("<h1>Working bhai</h1>")
+res.send(`<h1>Server is working </h1>`)
 })
 
 app.listen(process.env.PORT,()=>{
