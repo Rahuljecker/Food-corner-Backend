@@ -39,6 +39,7 @@ app.use(cookieParser());
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
 app.use(passport.session());
+app.enable("trust proxy");
 
 //connect passport 
 connectPassport();
