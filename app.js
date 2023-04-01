@@ -1,7 +1,7 @@
 import  express, { urlencoded }  from "express";
 import dotenv from "dotenv"
 import  {connectPassport}  from "./Utils/Provider.js";
-import passport from "passport"; 
+import passport, { session } from "passport"; 
 import  Session  from "express-session";
 import cookieParser from "cookie-parser"
 import { ErrorHandler } from "./Middleware/ErrorHandler.js";
@@ -15,7 +15,7 @@ dotenv.config({
 })
 
 //using Middlewares
-app.use(Session({
+app.use(session({
     secret:process.env.SESSION_SECRECT,
     resave:false,
     saveUninitialized:false,
@@ -23,8 +23,10 @@ app.use(Session({
         secure:process.env.NODE_DEV==="development"?false:true,
         httpOnly:process.env.NODE_DEV==="development"?false:true,
         sameSite:process.env.NODE_DEV==="development"?false:"none",
-    }
+    },
 }))
+
+
 app.use(express.json());
 app.use(urlencoded({
     extended:true,
