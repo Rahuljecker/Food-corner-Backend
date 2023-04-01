@@ -1,7 +1,7 @@
 import  express, { urlencoded }  from "express";
 import dotenv from "dotenv"
 import  {connectPassport}  from "./Utils/Provider.js";
-import passport, { session } from "passport"; 
+import passport from "passport"; 
 import  Session  from "express-session";
 import cookieParser from "cookie-parser"
 import { ErrorHandler } from "./Middleware/ErrorHandler.js";
