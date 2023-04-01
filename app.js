@@ -15,7 +15,7 @@ dotenv.config({
 })
 
 //using Middlewares
-app.use(session({
+app.use(Session({
     secret:process.env.SESSION_SECRECT,
     resave:false,
     saveUninitialized:false,
