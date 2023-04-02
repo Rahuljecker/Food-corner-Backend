@@ -5,7 +5,7 @@ import { User } from "../Models/User.js";
 
 
 export const getMyprofile=asyncErrorMiddleWare(async(req,res,next)=>{
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user);
     
     res.status(200).json({
         success:true,
