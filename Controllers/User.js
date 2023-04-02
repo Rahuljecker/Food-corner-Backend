@@ -4,12 +4,14 @@ import { User } from "../Models/User.js";
 
 
 
-export const getMyprofile=(req,res,next)=>{
-res.status(200).json({
-    success:true,
-    user:req.user,
-});
-}
+export const getMyprofile=asyncErrorMiddleWare(async(req,res,next)=>{
+    const user = await User.findById(req.user._id);
+    
+    res.status(200).json({
+        success:true,
+        user,
+    });
+    })
 
 
 
