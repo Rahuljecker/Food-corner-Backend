@@ -6,7 +6,7 @@ import ErrorHandlerUtils from "../Utils/ErrorHandlerUtils.js";
 
 
 export const getMyprofile=asyncErrorMiddleWare(async(req,res,next)=>{
-    const user =req.user._id;
+    const user =req.user;
     if(!user)
     return next(new ErrorHandlerUtils("User not Found",401));
     
