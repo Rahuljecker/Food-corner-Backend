@@ -1,15 +1,19 @@
 import { asyncErrorMiddleWare } from "../Middleware/ErrorHandler.js";
 import { Order } from "../Models/Order.js";
 import { User } from "../Models/User.js";
+import ErrorHandlerUtils from "../Utils/ErrorHandlerUtils.js";
 
 
 
 export const getMyprofile=asyncErrorMiddleWare(async(req,res,next)=>{
     const user = await User.findById(req.user._id);
+    if(!user)
+    return next(new ErrorHandlerUtils("User not Found",401));
     
     res.status(200).json({
         success:true,
-        user,
+        user:req.user,
+    message:"Welcome back `${user.user.name}`",
     });
     })
 
@@ -26,6 +30,7 @@ res.clearCookie("connect.sid",{
     sameSite:process.env.NODE_DEV==="development"?false:"none",
 });
 res.status(200).json({
+    success:true,
     message:"Logout successfully",
 })
 })
