@@ -8,10 +8,10 @@ import {Payment} from "../Models/Payment.js"
 
 
 export const CreateOrder =asyncErrorMiddleWare(async (req, res, next) => {
-    const { shippingInfo, orderItem, paymentMethod, ItemsPrice, ShippingPrice, TaxPrice, TotalPrice } = req.body;
+    const { shippingInfo, orderItem, paymentMethod, ItemsPrice, TaxPrice,ShippingPrice, TotalPrice } = req.body;
     const user = req.user._id;
     const orderOptions = {
-        shippingInfo, orderItem, paymentMethod, ItemsPrice, ShippingPrice, TaxPrice, TotalPrice, user
+        shippingInfo, orderItem, paymentMethod, ItemsPrice, TaxPrice,ShippingPrice, TotalPrice, user
     }
 
     await Order.create(orderOptions);
@@ -24,10 +24,10 @@ export const CreateOrder =asyncErrorMiddleWare(async (req, res, next) => {
 
 
 export const CreateOrderOnline =asyncErrorMiddleWare(async (req, res, next) => {
-    const { shippingInfo, orderItem, paymentMethod, ItemsPrice, ShippingPrice, TaxPrice, TotalPrice } = req.body;
+    const { shippingInfo, orderItem, paymentMethod, ItemsPrice, TaxPrice, ShippingPrice, TotalPrice } = req.body;
     const user = req.user._id;
     const orderOptions = {
-        shippingInfo, orderItem, paymentMethod, ItemsPrice, ShippingPrice, TaxPrice, TotalPrice, user
+        shippingInfo, orderItem, paymentMethod, ItemsPrice, TaxPrice,ShippingPrice, TotalPrice, user
     }
     const options = {
         amount: Number(TotalPrice)*100,  // amount in the smallest currency unit
