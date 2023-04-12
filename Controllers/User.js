@@ -8,7 +8,7 @@ import ErrorHandlerUtils from "../Utils/ErrorHandlerUtils.js";
 export const getMyprofile=asyncErrorMiddleWare(async(req,res,next)=>{
     const user =req.user;
     if(!user)
-    return next(new ErrorHandlerUtils("Not looged in,Kindly log in",401));
+    return next(new ErrorHandlerUtils("Not logged in,Kindly log in",401));
     
     res.status(200).json({
         success:true,
